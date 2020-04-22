@@ -15,15 +15,25 @@ export class DataService {
     this.listRecords();
   }
 
+  async listRecords() {
+    
+    this.records = await this.storage.get('records') || [];
+    //return this.records;
+
+    //this.storage.get('records').then(data=>{this.records = data || []});
+  }
+
+
   async saveRecord(record: Record) {
 
-    await this.listRecords();
+    console.log("savethisrecord: ", record);
+    //await this.listRecords();
     this.records.unshift(record);
     console.log("records:", this.records);
     this.storage.set('records',this.records);
   }
 
-  async listRecords() {
+  /*async listRecords() {
     this.storage.get('records').then((data:any)=>{
       this.records = data;
       console.log("data: ", data);
@@ -33,5 +43,8 @@ export class DataService {
   
     //this.records = this.storage.get('records') || [];
     //return this.records;
-  }
+  }*/
+
+  
+
 }

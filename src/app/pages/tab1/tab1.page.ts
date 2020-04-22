@@ -43,11 +43,13 @@ export class Tab1Page {
       .catch((e: any) => {
         console.log('Error is', e);
         console.log("Error programado");
-        this.record = new Record('http','https://google.com');
+        //this.record = new Record('http','https://google.com');
+        this.record = new Record('geo','geo:40.73151796986687,-74.06087294062502');
         //this.record
         //this.record.format ='http';
         //this.record.text = 'https://google.com';
         this.dataService.saveRecord(this.record);
+        
         
       });
   }

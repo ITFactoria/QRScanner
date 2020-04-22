@@ -17,8 +17,8 @@
   </ion-header> -->
 
   <ion-list>
-    <ion-item detail *ngFor="let record of dataService.records">
-      <ion-icon slot="start" [name]="record.icon" color="primary"></ion-icon>
+    <ion-item detail *ngFor="let record of dataService.records" (click)="showPage(record)">
+      <ion-icon slot="start" [name]="record.icon" color="primary" ></ion-icon>
       <ion-label>
         <h2>{{record.text}}</h2>
         <p>{{record.created | date: 'medium'}}</p>

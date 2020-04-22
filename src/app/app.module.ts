@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { IonicStorageModule } from '@ionic/storage';
+import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { IonicStorageModule } from '@ionic/storage';
     SplashScreen,
     QRScanner,
     Storage,
+    InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Record } from "../../models/record.model";
+import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
+import { NavController } from "@ionic/angular";
+
+//import { InAppBrowser } from '@ionic-enterprise/inappbrowser/ngx';
+
 
 @Component({
   selector: 'app-tab2',
@@ -9,14 +14,31 @@ import { Record } from "../../models/record.model";
 })
 export class Tab2Page {
 
-  records : Record[];
+  records: Record[];
 
-  constructor(public dataService : DataService) {}
+  constructor(public dataService: DataService, private inAppBrowser: InAppBrowser, private navCtrl: NavController) { }
 
-  
-  sendEmail(){
+
+  sendEmail() {
     console.log("Send email....");
   }
-  
+
+  showPage(record: Record) {
+    console.log("show page");
+    switch (record.format) {
+      case 'http': {
+        this.inAppBrowser.create(record.text);
+        break;
+      }
+      case 'geo': {
+        console.log("geo: ", record);
+        this.navCtrl.navigateForward(`/tabs/tab2/map/${record.text}`);
+        break;
+      }
+    }
+
+
+  }
+
 
 }
