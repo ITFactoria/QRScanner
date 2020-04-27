@@ -15,22 +15,27 @@ import { NavController } from "@ionic/angular";
 export class Tab2Page {
 
   records: Record[];
+  record : Record;
 
   constructor(public dataService: DataService, private inAppBrowser: InAppBrowser, private navCtrl: NavController) { }
 
 
   sendEmail() {
     console.log("Send email....");
+    this.dataService.buildFile();
   }
 
+  
+
   showPage(record: Record) {
-    console.log("show page");
+    console.log("show page ", record);
+
     switch (record.format) {
       case 'http': {
         this.inAppBrowser.create(record.text);
         break;
       }
-      case 'geo': {
+      case 'geo:': {
         console.log("geo: ", record);
         this.navCtrl.navigateForward(`/tabs/tab2/map/${record.text}`);
         break;

@@ -25,7 +25,7 @@ export class Record {
 
         switch (subFormat) {
             case 'http': {
-                this.type = 'web';
+                this.type = 'http';
                 this.icon = 'globe-outline';
                 break;
             }
